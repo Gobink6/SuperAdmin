@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ccf0f3"
+    tools:context=".Addu_a3Activity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="52dp"
+            android:text="REGISTER"
+            android:textColor="#000000"
+            android:textSize="30dp" />
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginLeft="45dp"
+            android:ems="10"
+            android:hint="Name"
+            android:paddingLeft="20dp"
+            android:background="@drawable/round_white"
+            android:singleLine="true"
+            android:drawableTint="@color/black"/>
+        <EditText
+            android:id="@+id/email1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="160dp"
+            android:ems="10"
+            android:hint="Email"
+            android:paddingLeft="20dp"
+            android:background="@drawable/round_white"
+            android:inputType="textEmailAddress"
+
+            android:drawableTint="@color/black"/>
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="220dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginLeft="45dp"
+            android:ems="10"
+            android:hint="Phone"
+            android:singleLine="true"
+            android:paddingLeft="20dp"
+            android:background="@drawable/round_white"
+            android:drawableTint="@color/black"/>
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="280dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginLeft="45dp"
+            android:entries="@array/Role_arrays"
+            android:prompt="@string/country_prompt"
+            android:paddingLeft="15dp"
+            android:background="@drawable/round_white"
+            android:drawableTint="@color/black"
+
+            />
+        <Spinner
+            android:id="@+id/spinnerform"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginTop="340dp"
+            android:background="@drawable/round_white"
+            android:drawableTint="#D2691E"
+            android:entries="@array/Windform"
+            android:paddingLeft="15dp" />
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="400dp"
+            android:background="#736495ed"
+            android:text="SUBMIT"
+            android:onClick="submit"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

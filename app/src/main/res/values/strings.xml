@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">Superadmin</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="country_prompt">Choose a Type</string>
+
+    <string-array name="Role_arrays">
+        <item>Select Role</item>
+        <item>User</item>
+        <item>SuperAdmin</item>
+        <item>Admin</item>
+
+    </string-array>
+    <string-array name="Windform">
+        <item>Select windform</item>
+        <item>Sendan</item>
+    </string-array>
+    <string-array name="users">
+        <item>Select Users</item>
+    </string-array>
+    <string-array name="windmills">
+        <item>Select Windmill</item>
+    </string-array>
+    <string-array name="shopping_item">
+        <item>Onion</item>
+        <item>Sausage</item>
+        <item>Milk</item>
+        <item></item>
+
+    </string-array>
+    <string-array name="SELECT">
+        <item>SELECT</item>
+        <item>No internet</item>
+    </string-array>
+    <string-array name="select_form">
+        <item>Select From</item>
+        <item>No internet</item>
+    </string-array>
+    <string-array name="select_mill">
+        <item>Select Mill</item>
+        <item>No internet</item>
+    </string-array>
+</resources>

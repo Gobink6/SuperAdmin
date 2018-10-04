@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/round_skyblue"
+    tools:context=".Addwindmill">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="serif"
+            android:text="ADD WINDMILL"
+            android:textColor="#000000"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+        <EditText
+            android:id="@+id/name0"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/round_white"
+            android:drawableTint="@color/black"
+            android:ems="10"
+            android:fontFamily="serif"
+            android:hint="Number"
+            android:paddingLeft="20dp"
+            android:singleLine="true" />
+        <EditText
+            android:id="@+id/customer_no"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginTop="75dp"
+            android:background="@drawable/round_white"
+            android:drawableTint="@color/black"
+            android:ems="10"
+            android:fontFamily="serif"
+            android:hint="Windmill Name"
+            android:paddingLeft="20dp"
+            android:singleLine="true" />
+        <EditText
+            android:id="@+id/sf_no"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginTop="120dp"
+            android:background="@drawable/round_white"
+            android:drawableTint="@color/black"
+            android:ems="10"
+            android:fontFamily="serif"
+            android:hint="SF NO"
+            android:paddingLeft="20dp"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/htfc_no"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginTop="165dp"
+            android:background="@drawable/round_white"
+            android:drawableTint="@color/black"
+            android:ems="10"
+            android:fontFamily="serif"
+            android:hint="HTFC NO"
+            android:paddingLeft="20dp"
+            android:singleLine="true" />
+        <EditText
+            android:id="@+id/village"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginTop="210dp"
+            android:background="@drawable/round_white"
+            android:drawableTint="@color/black"
+            android:ems="10"
+            android:fontFamily="serif"
+            android:hint="VILLAGE"
+            android:paddingLeft="20dp"
+            android:singleLine="true" />
+        <Spinner
+            android:id="@+id/sp_wf_list"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginTop="255dp"
+            android:background="@drawable/spinner_design"
+            android:entries="@array/SELECT"
+            android:fontFamily="serif"
+            android:paddingLeft="15dp"
+
+           >
+
+        </Spinner>
+        <Button
+            android:id="@+id/location"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="300dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/round_white"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:fontFamily="serif"
+            android:text="Select location" />
+
+        <Button
+            android:id="@+id/sub"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="130dp"
+            android:layout_marginRight="130dp"
+            android:layout_marginTop="350dp"
+            android:text="submit"
+            android:background="#736495ed"
+            tools:ignore="DuplicateIds" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="390dp"
+       >
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true" />
+
+    </RelativeLayout>
+</RelativeLayout>

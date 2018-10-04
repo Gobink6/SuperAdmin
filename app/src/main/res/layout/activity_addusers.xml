@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ccf0f3"
+    tools:context=".Addusers">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="13dp"
+            android:text="ADD USER"
+            android:textColor="#000000"
+            android:textSize="30dp" />
+        <EditText
+            android:id="@+id/uname"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginLeft="45dp"
+            android:ems="10"
+            android:hint="Name"
+            android:paddingLeft="20dp"
+            android:background="@drawable/round_white"
+            android:singleLine="true"
+            android:drawableTint="@color/black"/>
+        <EditText
+            android:id="@+id/uemail1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="115dp"
+            android:ems="10"
+            android:hint="Email"
+            android:paddingLeft="20dp"
+            android:background="@drawable/round_white"
+            android:inputType="textEmailAddress"
+
+            android:drawableTint="@color/black"/>
+        <EditText
+            android:id="@+id/uphone"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="170dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginLeft="45dp"
+            android:ems="10"
+            android:hint="Phone"
+            android:singleLine="true"
+            android:paddingLeft="20dp"
+            android:background="@drawable/round_white"
+            android:drawableTint="@color/black"/>
+        <Spinner
+            android:id="@+id/uspinner1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="225dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginLeft="45dp"
+            android:entries="@array/Role_arrays"
+            android:prompt="@string/country_prompt"
+            android:paddingLeft="15dp"
+            android:background="@drawable/round_white"
+            android:drawableTint="@color/black" />
+        <Spinner
+            android:id="@+id/uspinform"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="280dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginLeft="45dp"
+            android:paddingLeft="15dp"
+            android:entries="@array/select_form"
+            android:background="@drawable/round_white"
+            android:drawableTint="@color/black" />
+        <Spinner
+            android:id="@+id/uspinmill"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="335dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginLeft="45dp"
+            android:paddingLeft="15dp"
+            android:entries="@array/select_mill"
+            android:background="@drawable/round_white"
+            android:drawableTint="@color/black" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/uname"
+            android:layout_below="@+id/uspinmill"
+            android:layout_alignLeft="@+id/uname"
+            android:background="#736495ed"
+            android:layout_marginTop="9dp"
+            android:text="ADD mill"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/uname"
+            android:layout_marginTop="395dp"
+            android:background="#736495ed"
+            android:text="Submit"
+            android:layout_alignRight="@+id/uname" />
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>
