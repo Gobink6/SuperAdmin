@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.SparseArray;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.gms.vision.barcode.Barcode;
@@ -18,7 +19,15 @@ public class Verified extends AppCompatActivity implements  BarcodeReader.Barcod
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verified);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //Back button on tiitle bar
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+
+            setTitle("Verification");
+
+        }
+
+        actionBar.setDisplayHomeAsUpEnabled(true);
         // get the barcode reader instance
         barcodeReader = (BarcodeReader) getSupportFragmentManager().findFragmentById(R.id.barcode_scanner);
     }
@@ -53,5 +62,15 @@ public class Verified extends AppCompatActivity implements  BarcodeReader.Barcod
     @Override
     public void onCameraPermissionDenied() {
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

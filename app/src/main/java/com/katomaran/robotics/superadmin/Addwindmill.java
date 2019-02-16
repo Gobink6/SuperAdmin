@@ -21,6 +21,7 @@ import android.location.Location;
 import android.os.Build;
 import android.os.Looper;
 import android.support.v4.app.ActivityCompat;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -83,6 +84,8 @@ public class Addwindmill extends AppCompatActivity implements OnMapReadyCallback
     private static ArrayList<LauncherActivity.ListItem> listItems = new ArrayList<>();
     String lattitude, longitude = "";
     String windform_id;
+    protected View focusView = null;
+    protected boolean cancel = false;
     //pop window
     Dialog dialog;
     Button BT_add, btnCancel;
@@ -122,7 +125,7 @@ public class Addwindmill extends AppCompatActivity implements OnMapReadyCallback
             }
         });
         btn_addmill.setEnabled(false);
-        getJSON("http://192.168.0.103:3000/api/v1/wind_forms");
+        getJSON("http://sendan.in/api/v1/wind_farms");
         //check if the GPS On or Off
         LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         boolean statusOfGPS = manager.isProviderEnabled(LocationManager.GPS_PROVIDER);
@@ -222,11 +225,41 @@ public class Addwindmill extends AppCompatActivity implements OnMapReadyCallback
                     }
                     break;
                 case R.id.sub:
+                    //Phone pattern
+                    String MobilePattern = "[0-9]{9}";
+                    millid = ET_Millid.getText().toString();
                     customer_name = ET_CUSTOMER_NAME.getText().toString();
                     sf_no = ET_SF_N0.getText().toString();
                     htfc_no = ET_HTFC_NO.getText().toString();
                     village = ET_VILLAGE.getText().toString();
-                    longh();
+                    if ((TextUtils.isEmpty(millid))) {
+                        ET_Millid.setError("This fileld is required");
+                        focusView = ET_Millid;
+                        cancel = true;
+                    } else if (millid.matches(MobilePattern)) {
+                        ET_Millid.setError("Enter Valid Number");
+                        focusView = ET_Millid;
+                        cancel = true;
+                    } else if ((TextUtils.isEmpty(customer_name))) {
+                        ET_CUSTOMER_NAME.setError("This fileld is required");
+                        focusView = ET_CUSTOMER_NAME;
+                        cancel = true;
+                    } else if ((TextUtils.isEmpty(sf_no))) {
+                        ET_SF_N0.setError("This fileld is required");
+                        focusView = ET_SF_N0;
+                        cancel = true;
+                    } else if ((TextUtils.isEmpty(htfc_no))) {
+                        ET_HTFC_NO.setError("This fileld is required");
+                        focusView = ET_HTFC_NO;
+                        cancel = true;
+                    } else if ((TextUtils.isEmpty(village))) {
+                        ET_VILLAGE.setError("This fileld is required");
+                        focusView = ET_VILLAGE;
+                        cancel = true;
+                    } else {
+                        longh();
+                    }
+
             }
         }
     };
@@ -367,7 +400,7 @@ public class Addwindmill extends AppCompatActivity implements OnMapReadyCallback
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
-                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
                 try {
                     loadIntoListView(s);
                 } catch (JSONException e) {
@@ -524,7 +557,7 @@ public class Addwindmill extends AppCompatActivity implements OnMapReadyCallback
             try {
 
                 // Enter URL address where your rails file resides
-                urls = new URL("http://192.168.0.103:3000/api/v1/wind_forms/" + windform_id + "/wind_mills");
+                urls = new URL("http://sendan.in/api/v1/wind_farms/" + windform_id + "/wind_mills");
 
             } catch (MalformedURLException e) {
                 // TODO Auto-generated catch block
@@ -627,7 +660,7 @@ public class Addwindmill extends AppCompatActivity implements OnMapReadyCallback
             pdLoading.dismiss();
 
             try {
-                JSONObject reader = new JSONObject(s);
+              //  JSONObject reader = new JSONObject(s);
 
                 /// JSONObject sys  = reader.getJSONObject("data");//JSONParser jParser = new JSONParser();
                 JSONObject jsonObject = new JSONObject(s);
@@ -649,7 +682,7 @@ public class Addwindmill extends AppCompatActivity implements OnMapReadyCallback
                     DIALOG_TX_TEXT.setText(message);
                     dialog.show();
                 }
-                Message = message + message;
+                //Message = message + message;
             } catch (JSONException e) {
                 e.printStackTrace();
             }

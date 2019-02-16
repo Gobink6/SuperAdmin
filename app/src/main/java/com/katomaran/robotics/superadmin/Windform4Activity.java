@@ -76,6 +76,8 @@ public class Windform4Activity extends AppCompatActivity {
     TextView DIALOG_TX_TEXT;
     //SET ERROR MESSAGE
     boolean cancel_error = false;
+    String item = "";
+    String item_name = "";
     View focusView = null;
     ArrayList<Integer> mUserItems = new ArrayList<>();
     ArrayList<String[]> listdata = new ArrayList<String[]>();
@@ -118,18 +120,23 @@ public class Windform4Activity extends AppCompatActivity {
                 select_role = ET_ROLE.getSelectedItemPosition() - 1;
                 if (selectedItem_role.equals("Select Role")) {
                     spinner.setEnabled(false);
+                    Windmill_id = "";
                 } else if (selectedItem_role.equals("SuperAdmin") || selectedItem_role.equals("Admin")) {
                     spinner.setEnabled(true);
                     mOrder.setEnabled(false);
                     method = "windform";
+                    item = "";
+                    item_name = "";
+                    Windmill_id = "";
                     GETJS = false;
-                    getJSON("http://192.168.0.103:3000/api/v1/wind_forms");
+                    getJSON("http://sendan.in/api/v1/wind_farms");
                 } else if (selectedItem_role.equals("User")) {
                     spinner.setEnabled(true);
                     mOrder.setEnabled(true);
                     method = "Allmill";
+                    Windmill_id = "";
                     GETJS = false;
-                    getJSON("http://192.168.0.103:3000/api/v1/wind_forms");
+                    getJSON("http://sendan.in/api/v1/wind_farms");
 
 
                 }
@@ -172,7 +179,7 @@ public class Windform4Activity extends AppCompatActivity {
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
-                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
                 try {
                     loadspinner(s);
 
@@ -219,7 +226,7 @@ public class Windform4Activity extends AppCompatActivity {
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
-                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
                 try {
                     loadIntoListView(s);
                 } catch (JSONException e) {
@@ -276,7 +283,7 @@ public class Windform4Activity extends AppCompatActivity {
 
                         windform_id = windform_details.get(position).Windform_id;
                         GETJS = true;
-                        getJSONS("http://192.168.0.103:3000/api/v1/wind_forms/" + windform_id + "/wind_mills");
+                        getJSONS("http://sendan.in/api/v1/wind_farms/" + windform_id + "/wind_mills");
                         Toast.makeText(parent.getContext(), "Selected: " + windform_id, Toast.LENGTH_LONG).show();
 
                     }
@@ -336,8 +343,7 @@ public class Windform4Activity extends AppCompatActivity {
                     mBuilder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int which) {
-                            String item = "";
-                            String item_name = "";
+
 
                             for (int i = 0; i < mUserItems.size(); i++) {
                                 item = item + wind_id[mUserItems.get(i)];
@@ -414,7 +420,7 @@ public class Windform4Activity extends AppCompatActivity {
             ET_LAST_NAME.setError("This Last Name is required");
             focusView = ET_LAST_NAME;
             cancel_error = true;
-        }else if (TextUtils.isEmpty(email)) {
+        } else if (TextUtils.isEmpty(email)) {
             ET_EMAIL.setError("This Mail_id Name is required");
             focusView = ET_EMAIL;
             cancel_error = true;
@@ -423,7 +429,7 @@ public class Windform4Activity extends AppCompatActivity {
             focusView = ET_PHONE;
             cancel_error = true;
         } else if (!email.matches(emailPattern)) {
-            ET_EMAIL.setError("This Mobile_No is not a correct format");
+            ET_EMAIL.setError("This Mail_id is not a correct format");
             focusView = ET_EMAIL;
             cancel_error = true;
 
@@ -454,7 +460,7 @@ public class Windform4Activity extends AppCompatActivity {
             try {
 
                 // Enter URL address where your ruby file resides
-                url = new URL("http://192.168.0.103:3000/api/v1/users");
+                url = new URL("http://sendan.in/api/v1/users");
 
             } catch (MalformedURLException e) {
                 // TODO Auto-generated catch block
@@ -482,7 +488,7 @@ public class Windform4Activity extends AppCompatActivity {
                     params_key.put("email", email);
                     params_key.put("phone", Phone);
                     params_key.put("role", select_role);
-                    params_key.put("wind_form_id", windform_id);
+                    params_key.put("wind_farm_id", windform_id);
                     params_key.put("wind_mill_ids", Windmill_id);
                     user_details.put("user", params_key);
 

@@ -11,8 +11,8 @@
     <string-array name="Role_arrays">
         <item>Select Role</item>
         <item>User</item>
-        <item>SuperAdmin</item>
         <item>Admin</item>
+        <item>SuperAdmin</item>
 
     </string-array>
     <string-array name="Windform">

@@ -102,7 +102,7 @@ public class Super2Activity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         //set toolbar titile
-        getSupportActionBar().setTitle("Windform");
+        getSupportActionBar().setTitle("Windfarm");
         btn_addfrom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,7 +114,7 @@ public class Super2Activity extends AppCompatActivity {
                 JSONObject manJson = new JSONObject();
                 try {
                     manJson.put("name", getfromname);
-                    json.put("wind_form", manJson);
+                    json.put("wind_farm", manJson);
 
 
                 } catch (JSONException e) {
@@ -122,9 +122,9 @@ public class Super2Activity extends AppCompatActivity {
                 }
                 Windform = json.toString();
 
-              String  windform_url = "http://sendan.in/api/v1/wind_forms";
+              String  windform_url = "http://api-kiot.katomaran.com/api/v1/wind_farms";
                 if (TextUtils.isEmpty(getfromname)) {
-                    ET_FROMNAME.setError("This WindForm Name is required");
+                    ET_FROMNAME.setError("This WindFarm Name is required");
                     focusView = ET_FROMNAME;
                     cancel_error = true;
                 }else

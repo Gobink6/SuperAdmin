@@ -11,7 +11,7 @@
     android:orientation="vertical">
 
 
-    <LinearLayout
+   <!-- <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -37,7 +37,7 @@
             android:text="NILL"
             android:textStyle="bold"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
-    </LinearLayout>
+    </LinearLayout> -->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -183,7 +183,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="customer"
+            android:text="Location"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
         <TextView
             android:layout_width="0dp"
