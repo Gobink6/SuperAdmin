@@ -17,7 +17,7 @@
     </string-array>
     <string-array name="Windform">
         <item>Select windform</item>
-        <item>Sendan</item>
+        <item>No Internet</item>
     </string-array>
     <string-array name="users">
         <item>Select Users</item>

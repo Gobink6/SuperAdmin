@@ -92,6 +92,8 @@ public class Addwindmill extends AppCompatActivity implements OnMapReadyCallback
     TextView DIALOG_TX_TEXT;
     public static final int CONNECTION_TIMEOUT = 10000;
     public static final int READ_TIMEOUT = 15000;
+    String Host;
+    Savepref savepref = new Savepref();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,7 +127,8 @@ public class Addwindmill extends AppCompatActivity implements OnMapReadyCallback
             }
         });
         btn_addmill.setEnabled(false);
-        getJSON("http://sendan.in/api/v1/wind_farms");
+         Host = savepref.getString(getApplicationContext(), "Host");
+        getJSON("https://"+Host+"/api/v1/wind_farms");
         //check if the GPS On or Off
         LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         boolean statusOfGPS = manager.isProviderEnabled(LocationManager.GPS_PROVIDER);
@@ -557,7 +560,7 @@ public class Addwindmill extends AppCompatActivity implements OnMapReadyCallback
             try {
 
                 // Enter URL address where your rails file resides
-                urls = new URL("http://sendan.in/api/v1/wind_farms/" + windform_id + "/wind_mills");
+                urls = new URL("https://"+Host+"/api/v1/wind_farms/" + windform_id + "/wind_mills");
 
             } catch (MalformedURLException e) {
                 // TODO Auto-generated catch block
@@ -587,7 +590,7 @@ public class Addwindmill extends AppCompatActivity implements OnMapReadyCallback
                     manJson.put("name", customer_name);
                     manJson.put("sf_no", sf_no);
                     manJson.put("htsc_no", htfc_no);
-                    manJson.put("village", village);
+                    manJson.put("location", village);
                     json.put("wind_mill", manJson);
 
 

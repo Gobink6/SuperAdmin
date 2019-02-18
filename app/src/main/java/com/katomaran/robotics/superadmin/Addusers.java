@@ -34,6 +34,9 @@ public class Addusers extends AppCompatActivity {
     String Name, Email, Phone, spinform, Role, spinmill;
     public static final int CONNECTION_TIMEOUT = 10000;
     public static final int READ_TIMEOUT = 15000;
+    Savepref savepref = new Savepref();
+    String Host;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,8 @@ public class Addusers extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         //set toolbar titile
         getSupportActionBar().setTitle("Adduser");
+
+        Host = savepref.getString(getApplicationContext(), "Host");
         // Get Reference to variables
         ET_NAME = findViewById(R.id.uname);
         ET_EMAIL =findViewById(R.id.uemail1);

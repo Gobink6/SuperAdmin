@@ -32,7 +32,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Super2Activity" />
+        <activity android:name=".AddWinform" />
         <activity android:name=".Addu_a3Activity" />
         <activity android:name=".Windform4Activity" />
 
@@ -44,7 +44,8 @@
         <activity android:name=".Addusers" />
         <activity android:name=".Loginpage" />
         <activity android:name=".Verified" />
-        <activity android:name=".Verified_Details"></activity>
+        <activity android:name=".Verified_Details" />
+        <activity android:name=".Remove_windmill"></activity>
     </application>
 
 </manifest>

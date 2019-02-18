@@ -1,48 +1,26 @@
 package com.katomaran.robotics.superadmin;
 
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -53,14 +31,12 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.ExecutionException;
 
-public class Super2Activity extends AppCompatActivity {
-    EditText ET_FROMID, ET_FROMNAME;
+public class AddWinform extends AppCompatActivity {
+    EditText ET_FROMID, ET_FROMNAME,ET_FROMLOCATION;
     ListView listView;
     Button btn_addfrom;
-    String getFromid, getfromname;
+    String getFromid, getfromname,getfromlocation;
     public static final int CONNECTION_TIMEOUT = 10000;
     public static final int READ_TIMEOUT = 15000;
     Context ctx;
@@ -76,6 +52,8 @@ public class Super2Activity extends AppCompatActivity {
     Dialog dialog;
     Button BT_add, btnCancel;
     TextView DIALOG_TX_TEXT;
+    Savepref savepref = new Savepref();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +63,7 @@ public class Super2Activity extends AppCompatActivity {
         btn_addfrom = findViewById(R.id.fromclick);
         ///ET_FROMID = findViewById(R.id.windfromid);
         ET_FROMNAME = findViewById(R.id.fromname);
+        ET_FROMLOCATION = findViewById(R.id.fromlocation);
         invalidme = findViewById(R.id.invalidme);
         //pop window
         dialog = new Dialog(this);
@@ -110,10 +89,13 @@ public class Super2Activity extends AppCompatActivity {
                 //  getFromid = ET_FROMID.getText().toString();
 
                 getfromname = ET_FROMNAME.getText().toString();
+                getfromlocation = ET_FROMLOCATION.getText().toString();
+
                 JSONObject json = new JSONObject();
                 JSONObject manJson = new JSONObject();
                 try {
                     manJson.put("name", getfromname);
+                    manJson.put("location",getfromlocation);
                     json.put("wind_farm", manJson);
 
 
@@ -121,12 +103,20 @@ public class Super2Activity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 Windform = json.toString();
+                String Host = savepref.getString(getApplicationContext(), "Host");
+               String  windform_url = "https://"+Host+"/api/v1/wind_farms";
+                if (TextUtils.isEmpty(getfromname) || TextUtils.isEmpty(getfromlocation)) {
+                    if (TextUtils.isEmpty(getfromname)){
+                        ET_FROMNAME.setError("This WindFarm Name is required");
+                        focusView = ET_FROMNAME;
+                        cancel_error = true;
+                    }
+                    else if (TextUtils.isEmpty(getfromlocation)){
+                        ET_FROMLOCATION.setError("This WindFarm Location is required");
+                        focusView = ET_FROMLOCATION;
+                        cancel_error = true;
+                    }
 
-              String  windform_url = "http://api-kiot.katomaran.com/api/v1/wind_farms";
-                if (TextUtils.isEmpty(getfromname)) {
-                    ET_FROMNAME.setError("This WindFarm Name is required");
-                    focusView = ET_FROMNAME;
-                    cancel_error = true;
                 }else
                 {
                     new AsyncLink().execute(windform_url, Windform);
@@ -174,7 +164,7 @@ public class Super2Activity extends AppCompatActivity {
 
         HttpURLConnection conn;
         URL url = null;
-        ProgressDialog pdLoading = new ProgressDialog(Super2Activity.this);
+        ProgressDialog pdLoading = new ProgressDialog(AddWinform.this);
 
 
         protected void onPreExecute() {
@@ -287,8 +277,8 @@ public class Super2Activity extends AppCompatActivity {
                     DIALOG_TX_TEXT.setText(message);
                     dialog.show();
                     if (message.equalsIgnoreCase("Invalid Auth Token")) {
-                        Intent intent = new Intent(Super2Activity.this, Loginpage.class);
-                        Toast.makeText(Super2Activity.this, "Seesion Timeout Login Again", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(AddWinform.this, Loginpage.class);
+                        Toast.makeText(AddWinform.this, "Seesion Timeout Login Again", Toast.LENGTH_LONG).show();
                         startActivity(intent);
                     }
                     Toast.makeText(getApplicationContext(), Status, Toast.LENGTH_SHORT).show();

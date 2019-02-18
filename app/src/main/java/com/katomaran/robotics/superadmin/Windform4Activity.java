@@ -82,6 +82,8 @@ public class Windform4Activity extends AppCompatActivity {
     ArrayList<Integer> mUserItems = new ArrayList<>();
     ArrayList<String[]> listdata = new ArrayList<String[]>();
     ArrayList<String[]> mylist = new ArrayList<>();
+    Savepref savepref = new Savepref();
+    String Host;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +100,7 @@ public class Windform4Activity extends AppCompatActivity {
         dialog = new Dialog(this);
         dialog.setContentView(R.layout.custom_dialog);
         dialog.setTitle("Custom Alert Dialog");
+        Host = savepref.getString(getApplicationContext(), "Host");
         btnCancel = (Button) dialog.findViewById(R.id.cancel);
         DIALOG_TX_TEXT = dialog.findViewById(R.id.editText);
         btnCancel.setOnClickListener(new View.OnClickListener() {
@@ -112,6 +115,7 @@ public class Windform4Activity extends AppCompatActivity {
         //set toolbar titile
         getSupportActionBar().setTitle("Windfrom");
         spinner = (Spinner) findViewById(R.id.spinner1);
+
 
 
         ET_ROLE.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -129,14 +133,14 @@ public class Windform4Activity extends AppCompatActivity {
                     item_name = "";
                     Windmill_id = "";
                     GETJS = false;
-                    getJSON("http://sendan.in/api/v1/wind_farms");
+                    getJSON("https://"+Host+"/api/v1/wind_farms");
                 } else if (selectedItem_role.equals("User")) {
                     spinner.setEnabled(true);
                     mOrder.setEnabled(true);
                     method = "Allmill";
                     Windmill_id = "";
                     GETJS = false;
-                    getJSON("http://sendan.in/api/v1/wind_farms");
+                    getJSON("https://"+Host+"/api/v1/wind_farms");
 
 
                 }
@@ -283,7 +287,7 @@ public class Windform4Activity extends AppCompatActivity {
 
                         windform_id = windform_details.get(position).Windform_id;
                         GETJS = true;
-                        getJSONS("http://sendan.in/api/v1/wind_farms/" + windform_id + "/wind_mills");
+                        getJSONS("https://"+Host+"/api/v1/wind_farms/" + windform_id + "/wind_mills");
                         Toast.makeText(parent.getContext(), "Selected: " + windform_id, Toast.LENGTH_LONG).show();
 
                     }
@@ -460,7 +464,7 @@ public class Windform4Activity extends AppCompatActivity {
             try {
 
                 // Enter URL address where your ruby file resides
-                url = new URL("http://sendan.in/api/v1/users");
+                url = new URL("https://"+Host+"/api/v1/users");
 
             } catch (MalformedURLException e) {
                 // TODO Auto-generated catch block

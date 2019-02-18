@@ -32,6 +32,19 @@
         android:hint="NAME"
         android:inputType="textEmailAddress"
         android:paddingLeft="20dp" />
+    <EditText
+        android:id="@+id/fromlocation"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_marginTop="160dp"
+        android:background="@drawable/round_skyblue"
+        android:ems="10"
+        android:fontFamily="serif"
+        android:hint="LOCATION"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="20dp" />
 
     <Button
         android:id="@+id/fromclick"
@@ -39,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="220dp"
         android:text="ADD"
         android:background="#00bfff"/>
     <TextView

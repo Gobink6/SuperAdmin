@@ -5,10 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -19,12 +16,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    Savepref savepref = new Savepref();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +31,7 @@ public class MainActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
+        savepref.saveString(this, "Host", "api-kiot.katomaran.com");
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         if (Build.VERSION.SDK_INT >= 23) {
@@ -89,7 +83,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_addwindfrom) {
             // Handle the camera action
-            Intent intent = new Intent(MainActivity.this,Super2Activity.class);
+            Intent intent = new Intent(MainActivity.this,AddWinform.class);
             startActivity(intent);
             //Display the Toast message
             Toast.makeText(MainActivity.this, "Add Windfrom", Toast.LENGTH_LONG).show();
